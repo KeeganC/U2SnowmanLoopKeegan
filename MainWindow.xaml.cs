@@ -62,6 +62,8 @@ namespace U2SnowmanLoopKeegan
             int numBalls = 0;
             int counter = 0;
 
+            int ballTop = 150;
+
             if (reqNumBalls >= 6)
             {
                 MessageBox.Show("Too many balls");
@@ -74,16 +76,20 @@ namespace U2SnowmanLoopKeegan
                     numBalls++;
 
                     int ballHeight = 100;
+                    int ballWidth = 100;
 
                     Ellipse ball1 = new Ellipse();
-                    ball1.Height = ballHeight;
-                    ball1.Width = 100;
+                    ball1.Height = ballHeight * counter;
+                    ball1.Width = ballWidth * counter;
                     ball1.Fill = whiteBrush;
                     ball1.Stroke = Brushes.MediumPurple;
                     ball1.StrokeThickness = 5;
-                    Canvas.SetLeft(ball1, 300);
-                    Canvas.SetTop(ball1, 150);
+
+                    Canvas.SetLeft(ball1, 300 - 50 * (counter - 1));
+                    Canvas.SetTop(ball1, ballTop);
                     Canvas.Children.Add(ball1);
+
+                    ballTop = ballTop + (int)ball1.Height;
 
                     MessageBox.Show(counter.ToString());
                 }
